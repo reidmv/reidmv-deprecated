@@ -1,0 +1,3 @@
+function deprecated::param() {
+  default
+}

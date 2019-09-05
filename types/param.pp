@@ -1,0 +1,1 @@
+type Deprecated::Param = Default
