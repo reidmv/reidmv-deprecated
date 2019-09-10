@@ -1,9 +1,9 @@
-function deprecated::backwards_compatible_default(
+function deprecated::compatible_default(
   Any $deprecated_parameter_value,
-  Any $default,
+  Any $parameter_default,
 ) {
   $deprecated_parameter_value ? {
-    Deprecated::Param => $default,
+    Deprecated::Param => $parameter_default,
     default           => $deprecated_parameter_value,
   }
 }

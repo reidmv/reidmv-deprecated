@@ -1,1 +1,1 @@
-type Deprecated::Param = Default
+type Deprecated::Param = Variant[Default, Type[Deprecated::Param]]

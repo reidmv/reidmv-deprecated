@@ -21,7 +21,10 @@ Puppet::Functions.create_function(:'deprecated::parameters', Puppet::Functions::
 
       deprecated_param = scope[oldparam]
 
-      unless deprecated_param == :default
+      parser = Puppet::Pops::Types::TypeParser.new
+      deptype = parser.parse('Deprecated::Param')
+
+      unless Puppet::Pops::Types::TypeCalculator.instance?(deptype, deprecated_param)
         replace = case newparam
                   when nil
                     ''

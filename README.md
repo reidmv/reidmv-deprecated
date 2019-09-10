@@ -86,8 +86,8 @@ Deprecating the `api_v1` parameter in favor of `api_v2`:
 ```diff
  class example (
 -  String $api_v1 = '123',
-+  Variant[String, Deprecated::Param] $api_v1 = deprecated::param(),
-+  String $api_v2 = deprecated::backwards_compatible_default($api_v1, 'api_v2 default'),
++  Variant[Deprecated::Param, String] $api_v1 = Deprecated::Param,
++  String $api_v2 = deprecated::compatible_default($api_v1, 'api_v2 default'),
  ) {
 +  deprecated::parameters({
 +    'api_v1' => { replacement => 'api_v2' },
@@ -103,8 +103,8 @@ Obsoleting the `api_v1` parameter:
 
 ```diff
  class example (
--  Variant[String, Deprecated::Param] $api_v1 = deprecated::param(),
--  String $api_v2 = deprecated::backwards_compatible_default($api_v1, 'api_v2 default'),
+-  Variant[Deprecated::Param, String] $api_v1 = Deprecated::Param,
+-  String $api_v2 = deprecated::compatible_default($api_v1, 'api_v2 default'),
 +  String $api_v2 = 'api_v2 default',
  ) {
 -  deprecated::parameters({
